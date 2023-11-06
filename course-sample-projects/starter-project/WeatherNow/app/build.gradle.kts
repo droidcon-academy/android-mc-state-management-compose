@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.droidcon.weathernow"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.droidcon.weathernow"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.0")
