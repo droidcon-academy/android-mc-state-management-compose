@@ -1,4 +1,7 @@
 package com.droidcon.weathernow.model
 
-class WeatherData {
-}
+data class WeatherData(
+    val temperature: String,
+    val description: String,
+    val forecast: List<WeatherForecast>
+)

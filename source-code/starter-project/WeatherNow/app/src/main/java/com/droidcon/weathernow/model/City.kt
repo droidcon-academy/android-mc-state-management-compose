@@ -1,4 +1,7 @@
 package com.droidcon.weathernow.model
 
-class City {
-}
+data class City(
+    val name: String,
+    val country: String,
+    val weather: WeatherData
+)
