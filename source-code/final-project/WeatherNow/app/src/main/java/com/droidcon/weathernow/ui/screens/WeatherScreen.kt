@@ -77,7 +77,7 @@ fun SuccessState(weatherData: WeatherData) {
 
             // Use Modifier.weight(1f) to allow the WeatherForecastColumn to take up all available space
             WeatherForecastColumn(
-                forecastList = weatherData.forecast,
+                forecastList = weatherData.forecasts,
                 modifier = Modifier.weight(1f)
             )
         }

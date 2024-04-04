@@ -20,7 +20,7 @@ class WeatherRepository {
         return WeatherData(
             temperature = "${Random.nextInt(15, 30)}°C",
             description = randomDescription,
-            forecast = mockForecasts
+            forecasts = mockForecasts
         )
     }
 
