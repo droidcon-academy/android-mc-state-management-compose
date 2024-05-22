@@ -105,12 +105,12 @@ fun ErrorState(message: String) {
 fun WeatherIcon(description: String) {
     val iconRes = getWeatherIcon(description)
     Box(
-        contentAlignment = Alignment.Center // This will align the Image in the center of the Box
+        contentAlignment = Alignment.Center
     ) {
         Image(
             painter = painterResource(id = iconRes),
             contentDescription = description,
-            modifier = Modifier.size(80.dp) // The size of the Image
+            modifier = Modifier.size(80.dp)
         )
     }
 }
