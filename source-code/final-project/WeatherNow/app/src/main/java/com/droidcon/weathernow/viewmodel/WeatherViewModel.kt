@@ -1,5 +1,6 @@
 package com.droidcon.weathernow.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.droidcon.weathernow.model.City
@@ -21,6 +22,7 @@ class WeatherViewModel(private val repository: WeatherRepository = WeatherReposi
     private var lastQueriedCity: String? = null
 
     init {
+        Log.d("WeatherViewModel", "Fetching initial list of cities")
         loadCities()
     }
 
@@ -35,9 +37,12 @@ class WeatherViewModel(private val repository: WeatherRepository = WeatherReposi
         viewModelScope.launch {
             _weatherData.value = WeatherState.Loading
             try {
+                Log.d("WeatherViewModel", "Fetching weather data for $cityName")
                 val weather = repository.fetchWeatherForCity(cityName)
                 _weatherData.value = WeatherState.Success(weather)
+                Log.d("WeatherViewModel", "Weather data fetched successfully for $cityName")
             } catch (e: Exception) {
+                Log.e("WeatherViewModel", "Error fetching weather data for $cityName", e)
                 _weatherData.value = WeatherState.Error(e.message ?: "Unknown error")
             }
         }
@@ -46,6 +51,7 @@ class WeatherViewModel(private val repository: WeatherRepository = WeatherReposi
     // This method would be called from the UI component like an Activity or Fragment
     // when it is being created or recreated after a configuration change.
     fun restoreWeatherForLastQueriedCity() {
+        Log.d("WeatherViewModel", "Restoring weather for last queried city")
         lastQueriedCity?.let {
             getWeatherForCity(it)
         }

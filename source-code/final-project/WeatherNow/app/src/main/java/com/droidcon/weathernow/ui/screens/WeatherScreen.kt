@@ -1,5 +1,6 @@
 package com.droidcon.weathernow.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,12 +43,22 @@ fun WeatherScreen(viewModel: WeatherViewModel) {
 
     Column(modifier = Modifier.padding(16.dp)) {
         CitySearchBar(cities = cities.map { it.name }) { cityName ->
+            Log.d("WeatherScreen", "Fetching weather for city: $cityName")
             viewModel.getWeatherForCity(cityName)
         }
         when (val state = weatherState) {
-            is WeatherState.Loading -> LoadingState()
-            is WeatherState.Success -> SuccessState(weatherData = state.data)
-            is WeatherState.Error -> ErrorState(message = state.message)
+            is WeatherState.Loading -> {
+                LoadingState()
+                Log.d("WeatherScreen", "State: Loading")
+            }
+            is WeatherState.Success -> {
+                Log.d("WeatherScreen", "State: Success")
+                SuccessState(weatherData = state.data)
+            }
+            is WeatherState.Error -> {
+                Log.d("WeatherScreen", "State: Error - ${state.message}")
+                ErrorState(message = state.message)
+            }
         }
     }
 }
