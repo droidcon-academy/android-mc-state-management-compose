@@ -15,16 +15,16 @@ class WeatherViewModel : ViewModel() {
                 WeatherForecast("Tuesday", "18°C", "Rainy"),
                 )
         ))
-
+    
     val weatherData: StateFlow<WeatherData> = _weatherData
-
+    
     private val _showAdditionalDetails = MutableStateFlow(false)
     val showAdditionalDetails : StateFlow<Boolean> = _showAdditionalDetails
-
+    
     fun updateWeather(newWeatherData: WeatherData) {
         _weatherData.value = newWeatherData
     }
-
+    
     fun toggleDetails() {
         _showAdditionalDetails.value = !_showAdditionalDetails.value
     }
